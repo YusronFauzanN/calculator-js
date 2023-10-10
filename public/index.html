@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/public/css/output.css" rel="stylesheet">
+    <title>Calculator</title>
+</head>
+
+<body class="bg-gray-500 h-screen flex justify-center items-center">
+    <div class="bg-white p-6 rounded-lg shadow-md w-72">
+        <div class="mb-4">
+            <input id="display" class="w-full p-2 text-right border rounded" readonly>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+            <button class="col-span-2 p-2 rounded text-white bg-red-500 hover:bg-red-600" onclick="clearButton()">AC</button>
+            <button class="col-span-2 p-2 rounded text-white bg-red-500 hover:bg-red-600" onclick="backspace()">CE</button>
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('7')">7</button>
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('8')">8</button>
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('9')">9</button>
+            <button class="col-span-1 p-2 rounded text-white bg-yellow-500 hover:bg-yellow-600"
+                onclick="appendToDisplay('/')">/</button>
+
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('4')">4</button>
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('5')">5</button>
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('6')">6</button>
+            <button class="col-span-1 p-2 rounded text-white bg-yellow-500 hover:bg-yellow-600"
+                onclick="appendToDisplay('*')">*</button>
+
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('1')">1</button>
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('2')">2</button>
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('3')">3</button>
+            <button class="col-span-1 p-2 rounded text-white bg-yellow-500 hover:bg-yellow-600"
+                onclick="appendToDisplay('-')">-</button>
+
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('0')">0</button>
+            <button class="col-span-1 p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+                onclick="appendToDisplay('.')">.</button>
+            <button class="col-span-1 p-2 rounded text-white bg-green-500 hover:bg-green-600"
+                onclick="calculate()">=</button>
+            <button class="col-span-1 p-2 rounded text-white bg-yellow-500 hover:bg-yellow-600"
+                onclick="appendToDisplay('+')">+</button>
+        </div>
+    </div>
+</body>
+<script>
+    let value = '';
+    function clearButton() {
+        value = '';
+        document.getElementById('display').value = '';
+    }
+
+    function backspace() {
+        value = value.slice(0, -1);
+        document.getElementById('display').value = value;
+    }
+
+    function appendToDisplay(currentValue) {
+        value += currentValue;
+        console.log(value);
+        document.getElementById('display').value = value;
+    }
+
+    function calculate() {
+        try {
+            const result = eval(value);
+            document.getElementById("display").value = result;
+            value = result.toString();
+        } catch (error) {
+            document.getElementById("display").value = "Error";
+            value = "";
+        }
+    }
+</script>
+
+</html>

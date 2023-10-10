@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "number-to-words": "^1.2.4",
+    "spell-it": "^0.2.1",
+    "translate": "^2.0.2"
+  }
+}
